@@ -92,98 +92,221 @@ export default function Home() {
 
       {/* Feature Highlights Grid */}
       <div className="text-center mb-5">
+        <span className="badge bg-success bg-opacity-10 text-success fw-bold px-3 py-2 rounded-pill mb-2">
+          ✨ Complete Smart Agriculture Ecosystem
+        </span>
         <h2 className="fw-bold text-dark">Comprehensive Smart Farming Modules</h2>
-        <p className="text-muted">Designed to optimize agricultural output and reduce pest losses</p>
+        <p className="text-muted">High-precision digital tools engineered to maximize crop yield, eliminate pest damage, and support farmers</p>
       </div>
 
       <div className="row g-4 mb-5">
-        <div className="col-md-4">
-          <div className="agri-card p-4 h-100">
-            <div className="stat-icon-wrapper bg-success bg-opacity-10 text-success mb-3">
-              <Tractor size={26} />
+        {/* Module 1: Farm & Crop Monitoring */}
+        <div className="col-md-6 col-lg-4">
+          <div
+            className="feature-card"
+            style={{
+              '--module-accent': '#16a34a',
+              '--module-glow': 'rgba(34, 197, 94, 0.22)',
+              '--module-icon-bg': 'rgba(34, 197, 94, 0.12)',
+              '--module-shadow': 'rgba(22, 163, 74, 0.22)',
+              '--module-border': 'rgba(34, 197, 94, 0.45)'
+            }}
+          >
+            <div>
+              <div className="d-flex align-items-center justify-content-between mb-3">
+                <div className="feature-icon-box">
+                  <Tractor size={28} />
+                </div>
+                <span className="feature-badge-pill">
+                  🌾 Multi-Plot Track
+                </span>
+              </div>
+              <h5 className="fw-bold text-dark mb-2">Farm & Crop Monitoring</h5>
+              <p className="text-muted small mb-4">
+                Track multi-plot acreage, soil classifications, and vegetative phenological stages from seed germination to harvest with yield forecasting.
+              </p>
             </div>
-            <h5 className="fw-bold">Farm & Crop Monitoring</h5>
-            <p className="text-muted small">
-              Track multi-plot acreage, soil classifications, and vegetative growth stages from sowing to harvest with yield forecasting.
-            </p>
-            <Link to={isAuthenticated ? "/crops" : "/login"} className="text-success fw-bold text-decoration-none small d-flex align-items-center gap-1">
-              <span>Track Growth Stages</span> &rarr;
-            </Link>
+            <div>
+              <Link to={isAuthenticated ? "/crops" : "/login"} className="feature-card-cta">
+                <span>Track Growth Stages</span>
+                <ArrowRight size={16} />
+              </Link>
+            </div>
           </div>
         </div>
 
-        <div className="col-md-4">
-          <div className="agri-card p-4 h-100">
-            <div className="stat-icon-wrapper bg-warning bg-opacity-10 text-warning mb-3">
-              <FlaskConical size={26} />
+        {/* Module 2: Soil Health & NPK Diagnostics */}
+        <div className="col-md-6 col-lg-4">
+          <div
+            className="feature-card"
+            style={{
+              '--module-accent': '#d97706',
+              '--module-glow': 'rgba(245, 158, 11, 0.24)',
+              '--module-icon-bg': 'rgba(245, 158, 11, 0.12)',
+              '--module-shadow': 'rgba(217, 119, 6, 0.22)',
+              '--module-border': 'rgba(245, 158, 11, 0.45)'
+            }}
+          >
+            <div>
+              <div className="d-flex align-items-center justify-content-between mb-3">
+                <div className="feature-icon-box">
+                  <FlaskConical size={28} />
+                </div>
+                <span className="feature-badge-pill">
+                  🧪 NPK Bio-Algorithm
+                </span>
+              </div>
+              <h5 className="fw-bold text-dark mb-2">Soil Health & Diagnostics</h5>
+              <p className="text-muted small mb-4">
+                Input Nitrogen, Phosphorus, Potassium and pH levels to generate instant algorithmic fertilizer recommendations and crop suitability reports.
+              </p>
             </div>
-            <h5 className="fw-bold">Soil Health & NPK Diagnostics</h5>
-            <p className="text-muted small">
-              Input Nitrogen, Phosphorus, Potassium and pH levels to generate instant algorithmic fertilizer recommendations and crop suitability reports.
-            </p>
-            <Link to={isAuthenticated ? "/soil" : "/login"} className="text-success fw-bold text-decoration-none small d-flex align-items-center gap-1">
-              <span>Test Soil Health</span> &rarr;
-            </Link>
+            <div>
+              <Link to={isAuthenticated ? "/soil" : "/login"} className="feature-card-cta">
+                <span>Diagnose Soil Health</span>
+                <ArrowRight size={16} />
+              </Link>
+            </div>
           </div>
         </div>
 
-        <div className="col-md-4">
-          <div className="agri-card p-4 h-100">
-            <div className="stat-icon-wrapper bg-danger bg-opacity-10 text-danger mb-3">
-              <Bug size={26} />
+        {/* Module 3: Weather Forecast & Pest Defense */}
+        <div className="col-md-6 col-lg-4">
+          <div
+            className="feature-card"
+            style={{
+              '--module-accent': '#dc2626',
+              '--module-glow': 'rgba(239, 68, 68, 0.24)',
+              '--module-icon-bg': 'rgba(239, 68, 68, 0.12)',
+              '--module-shadow': 'rgba(220, 38, 38, 0.22)',
+              '--module-border': 'rgba(239, 68, 68, 0.45)'
+            }}
+          >
+            <div>
+              <div className="d-flex align-items-center justify-content-between mb-3">
+                <div className="feature-icon-box">
+                  <Bug size={28} />
+                </div>
+                <span className="feature-badge-pill">
+                  ⚠️ Early Warning
+                </span>
+              </div>
+              <h5 className="fw-bold text-dark mb-2">Weather & Pest Defense</h5>
+              <p className="text-muted small mb-4">
+                Hyper-local 5-day weather advisories with early warnings for Fall Armyworm, Rust, and Aphids with organic Neem & bio-control solutions.
+              </p>
             </div>
-            <h5 className="fw-bold">Weather Forecast & Pest Defense</h5>
-            <p className="text-muted small">
-              Hyper-local 5-day weather advisories with early warnings for Fall Armyworm, Rust, and Aphids with organic Neem & bio-control solutions.
-            </p>
-            <Link to="/weather" className="text-success fw-bold text-decoration-none small d-flex align-items-center gap-1">
-              <span>View Active Alerts</span> &rarr;
-            </Link>
+            <div>
+              <Link to="/weather" className="feature-card-cta">
+                <span>View Live Defense Radar</span>
+                <ArrowRight size={16} />
+              </Link>
+            </div>
           </div>
         </div>
 
-        <div className="col-md-4">
-          <div className="agri-card p-4 h-100">
-            <div className="stat-icon-wrapper bg-primary bg-opacity-10 text-primary mb-3">
-              <ShoppingBag size={26} />
+        {/* Module 4: Agri-Resource Marketplace */}
+        <div className="col-md-6 col-lg-4">
+          <div
+            className="feature-card"
+            style={{
+              '--module-accent': '#2563eb',
+              '--module-glow': 'rgba(59, 130, 246, 0.24)',
+              '--module-icon-bg': 'rgba(59, 130, 246, 0.12)',
+              '--module-shadow': 'rgba(37, 99, 235, 0.22)',
+              '--module-border': 'rgba(59, 130, 246, 0.45)'
+            }}
+          >
+            <div>
+              <div className="d-flex align-items-center justify-content-between mb-3">
+                <div className="feature-icon-box">
+                  <ShoppingBag size={28} />
+                </div>
+                <span className="feature-badge-pill">
+                  🛍️ Kisan Store
+                </span>
+              </div>
+              <h5 className="fw-bold text-dark mb-2">Agri-Resource Marketplace</h5>
+              <p className="text-muted small mb-4">
+                Direct access to certified hybrid seeds, organic vermicompost, solar drip systems, and bio-pesticides with doorstep delivery and Kisan Pay.
+              </p>
             </div>
-            <h5 className="fw-bold">Agri-Resource Marketplace</h5>
-            <p className="text-muted small">
-              Direct access to certified hybrid seeds, organic vermicompost, solar drip systems, and bio-pesticides with doorstep delivery.
-            </p>
-            <Link to="/marketplace" className="text-success fw-bold text-decoration-none small d-flex align-items-center gap-1">
-              <span>Browse Catalog</span> &rarr;
-            </Link>
+            <div>
+              <Link to="/marketplace" className="feature-card-cta">
+                <span>Browse Resource Catalog</span>
+                <ArrowRight size={16} />
+              </Link>
+            </div>
           </div>
         </div>
 
-        <div className="col-md-4">
-          <div className="agri-card p-4 h-100">
-            <div className="stat-icon-wrapper bg-info bg-opacity-10 text-info mb-3">
-              <Users size={26} />
+        {/* Module 5: Agronomist Consultation Forum */}
+        <div className="col-md-6 col-lg-4">
+          <div
+            className="feature-card"
+            style={{
+              '--module-accent': '#0d9488',
+              '--module-glow': 'rgba(20, 184, 166, 0.24)',
+              '--module-icon-bg': 'rgba(20, 184, 166, 0.12)',
+              '--module-shadow': 'rgba(13, 148, 136, 0.22)',
+              '--module-border': 'rgba(20, 184, 166, 0.45)'
+            }}
+          >
+            <div>
+              <div className="d-flex align-items-center justify-content-between mb-3">
+                <div className="feature-icon-box">
+                  <Users size={28} />
+                </div>
+                <span className="feature-badge-pill">
+                  🌱 Verified Advisory
+                </span>
+              </div>
+              <h5 className="fw-bold text-dark mb-2">Expert Consultation Forum</h5>
+              <p className="text-muted small mb-4">
+                Post real farm queries, upload disease symptoms, and receive verified corrective advice directly from agricultural university agronomists.
+              </p>
             </div>
-            <h5 className="fw-bold">Agronomist Consultation Forum</h5>
-            <p className="text-muted small">
-              Post real farm queries, upload disease descriptions, and receive verified recommendations from agricultural university agronomists.
-            </p>
-            <Link to="/forum" className="text-success fw-bold text-decoration-none small d-flex align-items-center gap-1">
-              <span>Join Discussion</span> &rarr;
-            </Link>
+            <div>
+              <Link to="/forum" className="feature-card-cta">
+                <span>Join Discussion Forum</span>
+                <ArrowRight size={16} />
+              </Link>
+            </div>
           </div>
         </div>
 
-        <div className="col-md-4">
-          <div className="agri-card p-4 h-100">
-            <div className="stat-icon-wrapper bg-secondary bg-opacity-10 text-secondary mb-3">
-              <ShieldCheck size={26} />
+        {/* Module 6: Role-Based Security & Admin */}
+        <div className="col-md-6 col-lg-4">
+          <div
+            className="feature-card"
+            style={{
+              '--module-accent': '#7c3aed',
+              '--module-glow': 'rgba(139, 92, 246, 0.24)',
+              '--module-icon-bg': 'rgba(139, 92, 246, 0.12)',
+              '--module-shadow': 'rgba(124, 58, 237, 0.22)',
+              '--module-border': 'rgba(139, 92, 246, 0.45)'
+            }}
+          >
+            <div>
+              <div className="d-flex align-items-center justify-content-between mb-3">
+                <div className="feature-icon-box">
+                  <ShieldCheck size={28} />
+                </div>
+                <span className="feature-badge-pill">
+                  🛡️ RBAC & JWT
+                </span>
+              </div>
+              <h5 className="fw-bold text-dark mb-2">Role-Based Security & Admin</h5>
+              <p className="text-muted small mb-4">
+                Encrypted JWT sessions, bcrypt password hashing, and administrative dashboard for broadcasting emergency pest alerts and monitoring system health.
+              </p>
             </div>
-            <h5 className="fw-bold">Role-Based Security & Admin</h5>
-            <p className="text-muted resource small">
-              Encrypted JWT sessions, bcrypt password hashing, and administrative dashboard for moderating advisories and monitoring system health.
-            </p>
-            <Link to="/login" className="text-success fw-bold text-decoration-none small d-flex align-items-center gap-1">
-              <span>Secure Authentication</span> &rarr;
-            </Link>
+            <div>
+              <Link to="/login" className="feature-card-cta">
+                <span>Secure Authentication</span>
+                <ArrowRight size={16} />
+              </Link>
+            </div>
           </div>
         </div>
       </div>
