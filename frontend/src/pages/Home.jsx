@@ -23,29 +23,29 @@ export default function Home() {
     <div className="container py-4">
       {/* Hero Section */}
       <div className="hero-banner p-4 p-md-5 mb-5 shadow-sm">
-        <div className="row align-items-center">
-          <div className="col-lg-8">
-            <span className="badge bg-light text-success fw-bold px-3 py-2 rounded-pill mb-3">
+        <div className="row align-items-center w-100">
+          <div className="col-lg-7 col-md-9">
+            <span className="badge bg-light text-success fw-bold px-3 py-2 rounded-pill mb-3 shadow-sm">
               🌱 Next-Gen Smart Farming Platform
             </span>
             <h1 className="display-5 fw-extrabold text-white mb-3">
               {t('tagline')}
             </h1>
-            <p className="lead text-white-50 mb-4" style={{ maxWidth: '640px' }}>
+            <p className="lead text-white-50 mb-4" style={{ maxWidth: '580px' }}>
               Bridge the gap between traditional agricultural wisdom and modern digital tools. 
               Monitor crops in real time, analyze soil NPK balance, receive hyper-local weather alerts, 
               and consult agronomy experts — all in one accessible platform.
             </p>
             <div className="d-flex flex-wrap gap-3">
               {isAuthenticated ? (
-                <Link to="/dashboard" className="btn btn-light btn-lg text-success fw-bold px-4 py-2 rounded-pill d-flex align-items-center gap-2">
+                <Link to="/dashboard" className="btn btn-light btn-lg text-success fw-bold px-4 py-2 rounded-pill d-flex align-items-center gap-2 shadow-sm">
                   <Tractor size={20} />
                   <span>Go to My Dashboard</span>
                   <ArrowRight size={18} />
                 </Link>
               ) : (
                 <>
-                  <Link to="/register" className="btn btn-warning btn-lg text-dark fw-bold px-4 py-2 rounded-pill d-flex align-items-center gap-2">
+                  <Link to="/register" className="btn btn-warning btn-lg text-dark fw-bold px-4 py-2 rounded-pill d-flex align-items-center gap-2 shadow-sm">
                     <span>Get Started Free</span>
                     <ArrowRight size={18} />
                   </Link>
@@ -54,37 +54,6 @@ export default function Home() {
                   </Link>
                 </>
               )}
-            </div>
-          </div>
-          <div className="col-lg-4 text-center d-none d-lg-block">
-            <div className="hero-farm-card">
-              <img
-                src="https://images.unsplash.com/photo-1500937386664-56d1dfef3854?w=800&auto=format&fit=crop&q=80"
-                alt="Smart Agricultural Farm"
-              />
-              <div className="hero-farm-overlay text-start">
-                <div className="d-flex justify-content-between align-items-center">
-                  <span className="badge bg-white text-success fw-bold px-3 py-1 rounded-pill shadow-sm small">
-                    🌾 Smart Precision Farm
-                  </span>
-                  <span className="badge bg-success bg-opacity-75 text-white border border-white border-opacity-50 small">
-                    ● Live Telemetry
-                  </span>
-                </div>
-
-                <div className="bg-dark bg-opacity-40 p-3 rounded-3 backdrop-blur border border-white border-opacity-25 text-white">
-                  <div className="d-flex justify-content-between align-items-center small mb-1">
-                    <span className="text-white-50">Crop Health Index</span>
-                    <strong className="text-warning">98% Optimal</strong>
-                  </div>
-                  <div className="custom-progress mb-2" style={{ height: '6px' }}>
-                    <div className="progress-bar bg-warning" style={{ width: '98%' }}></div>
-                  </div>
-                  <div className="small text-white-50">
-                    📡 Multi-plot IoT Soil & Weather Monitoring Active
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
         </div>
