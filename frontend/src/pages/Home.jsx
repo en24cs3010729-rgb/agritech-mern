@@ -57,18 +57,33 @@ export default function Home() {
             </div>
           </div>
           <div className="col-lg-4 text-center d-none d-lg-block">
-            <div className="bg-white bg-opacity-10 p-4 rounded-4 backdrop-blur border border-white border-opacity-25 text-start">
-              <h6 className="text-warning fw-bold text-uppercase mb-2">⚡ Quick Evaluation Access</h6>
-              <p className="small text-white-50 mb-3">
-                Pre-configured mentor test accounts are ready for instant login:
-              </p>
-              <div className="bg-dark bg-opacity-50 p-2 rounded mb-2 small font-monospace text-white">
-                <div>🌾 <strong>Farmer:</strong> farmer@agritech.com</div>
-                <div>🔑 Pass: <code>farmer123</code></div>
-              </div>
-              <div className="bg-dark bg-opacity-50 p-2 rounded small font-monospace text-white">
-                <div>🛡️ <strong>Admin:</strong> admin@agritech.com</div>
-                <div>🔑 Pass: <code>admin123</code></div>
+            <div className="hero-farm-card">
+              <img
+                src="https://images.unsplash.com/photo-1500937386664-56d1dfef3854?w=800&auto=format&fit=crop&q=80"
+                alt="Smart Agricultural Farm"
+              />
+              <div className="hero-farm-overlay text-start">
+                <div className="d-flex justify-content-between align-items-center">
+                  <span className="badge bg-white text-success fw-bold px-3 py-1 rounded-pill shadow-sm small">
+                    🌾 Smart Precision Farm
+                  </span>
+                  <span className="badge bg-success bg-opacity-75 text-white border border-white border-opacity-50 small">
+                    ● Live Telemetry
+                  </span>
+                </div>
+
+                <div className="bg-dark bg-opacity-40 p-3 rounded-3 backdrop-blur border border-white border-opacity-25 text-white">
+                  <div className="d-flex justify-content-between align-items-center small mb-1">
+                    <span className="text-white-50">Crop Health Index</span>
+                    <strong className="text-warning">98% Optimal</strong>
+                  </div>
+                  <div className="custom-progress mb-2" style={{ height: '6px' }}>
+                    <div className="progress-bar bg-warning" style={{ width: '98%' }}></div>
+                  </div>
+                  <div className="small text-white-50">
+                    📡 Multi-plot IoT Soil & Weather Monitoring Active
+                  </div>
+                </div>
               </div>
             </div>
           </div>
