@@ -4,21 +4,28 @@
   --primary-light: #22c55e;
   --accent-gold: #eab308;
   --accent-amber: #d97706;
-  --bg-soft: #f8fafc;
-  --surface-card: #ffffff;
+  --bg-soft: #f1f5f9;
+  --surface-card: rgba(255, 255, 255, 0.65);
+  --surface-glass: rgba(255, 255, 255, 0.72);
+  --glass-border: rgba(255, 255, 255, 0.55);
+  --glass-inner-light: inset 0 1.5px 1px 0 rgba(255, 255, 255, 0.9);
   --text-main: #0f172a;
   --text-muted: #64748b;
-  --border-color: #e2e8f0;
+  --border-color: rgba(226, 232, 240, 0.7);
 }
 
 [data-theme="dark"] {
-  --bg-soft: #0b1120;
-  --surface-card: #1e293b;
+  --bg-soft: #080d1a;
+  --surface-card: rgba(30, 41, 59, 0.62);
+  --surface-glass: rgba(30, 41, 59, 0.72);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --glass-inner-light: inset 0 1px 1px 0 rgba(255, 255, 255, 0.15);
   --text-main: #f8fafc;
   --text-muted: #94a3b8;
-  --border-color: #334155;
+  --border-color: rgba(51, 65, 85, 0.6);
 }
 
+/* Ambient Fluid Aurora Background Orbs */
 body {
   font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
   background-color: var(--bg-soft);
@@ -26,14 +33,65 @@ body {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
-  transition: background-color 0.25s ease, color 0.25s ease;
+  min-height: 100vh;
+  position: relative;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Custom Navbar */
+body::before, body::after {
+  content: '';
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(100px);
+  pointer-events: none;
+  z-index: -1;
+  opacity: 0.55;
+  transition: all 0.5s ease;
+}
+
+/* Fluid Organic Liquid Mesh */
+body::before {
+  width: 520px;
+  height: 520px;
+  background: radial-gradient(circle, rgba(34, 197, 94, 0.32) 0%, rgba(56, 189, 248, 0.16) 60%, transparent 100%);
+  top: -120px;
+  left: -100px;
+  animation: fluidDrift 20s ease-in-out infinite alternate;
+}
+
+body::after {
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(234, 179, 8, 0.22) 0%, rgba(34, 197, 94, 0.18) 50%, transparent 100%);
+  bottom: 0px;
+  right: -120px;
+  animation: fluidDrift 24s ease-in-out infinite alternate-reverse;
+}
+
+[data-theme="dark"] body::before {
+  background: radial-gradient(circle, rgba(22, 163, 74, 0.25) 0%, rgba(14, 165, 233, 0.18) 60%, transparent 100%);
+  opacity: 0.65;
+}
+
+[data-theme="dark"] body::after {
+  background: radial-gradient(circle, rgba(168, 85, 247, 0.18) 0%, rgba(20, 184, 166, 0.18) 50%, transparent 100%);
+  opacity: 0.65;
+}
+
+@keyframes fluidDrift {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(40px, 30px) scale(1.08); }
+  100% { transform: translate(-30px, 50px) scale(0.95); }
+}
+
+/* Liquid Glass Navbar */
 .agri-navbar {
-  background: var(--surface-card);
-  border-bottom: 1px solid var(--border-color);
-  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.04);
+  background: var(--surface-glass) !important;
+  backdrop-filter: blur(24px) saturate(190%);
+  -webkit-backdrop-filter: blur(24px) saturate(190%);
+  border-bottom: 1px solid var(--glass-border);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.04), var(--glass-inner-light);
+  transition: all 0.3s ease;
 }
 
 .agri-brand {
@@ -44,47 +102,65 @@ body {
   align-items: center;
   gap: 0.5rem;
   text-decoration: none;
+  filter: drop-shadow(0 2px 8px rgba(34, 197, 94, 0.25));
 }
 
 .nav-link {
   font-weight: 600;
   color: var(--text-main) !important;
-  transition: all 0.2s ease;
+  transition: all 0.25s ease;
   padding: 0.5rem 0.85rem !important;
-  border-radius: 8px;
+  border-radius: 12px;
 }
 
 .nav-link:hover, .nav-link.active {
   color: var(--primary-green) !important;
   background-color: rgba(34, 197, 94, 0.12);
+  backdrop-filter: blur(8px);
 }
 
-/* Feature Cards & Dashboard */
+/* Liquid Glass Footer */
+.agri-footer {
+  background: var(--surface-glass) !important;
+  backdrop-filter: blur(24px) saturate(190%);
+  -webkit-backdrop-filter: blur(24px) saturate(190%);
+  border-top: 1px solid var(--glass-border);
+  box-shadow: 0 -8px 32px 0 rgba(0, 0, 0, 0.03);
+}
+
+/* Liquid Glass Standard Cards */
 .agri-card {
-  background: var(--surface-card);
-  border-radius: 16px;
-  border: 1px solid var(--border-color);
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  background: var(--surface-card) !important;
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-radius: 20px;
+  border: 1px solid var(--glass-border) !important;
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.05), var(--glass-inner-light);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .agri-card:hover {
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.07), 0 4px 6px -4px rgba(0, 0, 0, 0.07);
+  transform: translateY(-4px);
+  box-shadow: 0 18px 36px -12px rgba(0, 0, 0, 0.09), var(--glass-inner-light);
+  border-color: rgba(34, 197, 94, 0.35) !important;
 }
 
-/* Dynamic Module Feature Cards */
+/* Liquid Glass Dynamic Feature Cards */
 .feature-card {
   position: relative;
-  background: var(--surface-card);
-  border-radius: 20px;
-  border: 1px solid var(--border-color);
-  padding: 1.75rem;
+  background: var(--surface-glass) !important;
+  backdrop-filter: blur(24px) saturate(190%);
+  -webkit-backdrop-filter: blur(24px) saturate(190%);
+  border-radius: 22px;
+  border: 1px solid var(--glass-border) !important;
+  padding: 1.85rem;
   overflow: hidden;
   transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   height: 100%;
+  box-shadow: 0 12px 35px -10px rgba(0, 0, 0, 0.06), var(--glass-inner-light);
 }
 
 .feature-card::before {
@@ -106,43 +182,49 @@ body {
 .feature-card::after {
   content: '';
   position: absolute;
-  top: -30px;
-  right: -30px;
-  width: 130px;
-  height: 130px;
-  background: radial-gradient(circle, var(--module-glow, rgba(34, 197, 94, 0.18)) 0%, rgba(255, 255, 255, 0) 70%);
+  top: -35px;
+  right: -35px;
+  width: 140px;
+  height: 140px;
+  background: radial-gradient(circle, var(--module-glow, rgba(34, 197, 94, 0.22)) 0%, rgba(255, 255, 255, 0) 70%);
   border-radius: 50%;
   pointer-events: none;
   transition: transform 0.4s ease, opacity 0.4s ease;
-  opacity: 0.6;
+  opacity: 0.7;
 }
 
 .feature-card:hover::after {
-  transform: scale(1.4);
+  transform: scale(1.5);
   opacity: 1;
 }
 
 .feature-card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 20px 35px -10px var(--module-shadow, rgba(0, 0, 0, 0.12));
-  border-color: var(--module-border, var(--primary-green));
+  box-shadow: 0 24px 45px -12px var(--module-shadow, rgba(0, 0, 0, 0.14)), var(--glass-inner-light);
+  border-color: var(--module-border, var(--primary-green)) !important;
 }
 
 .feature-icon-box {
-  width: 54px;
-  height: 54px;
-  border-radius: 16px;
+  width: 56px;
+  height: 56px;
+  border-radius: 18px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--module-icon-bg, rgba(22, 163, 74, 0.1));
+  background: var(--module-icon-bg, rgba(22, 163, 74, 0.12));
   color: var(--module-accent, #16a34a);
-  box-shadow: 0 4px 12px -2px var(--module-glow, rgba(0, 0, 0, 0.08));
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0 6px 16px -2px var(--module-glow, rgba(0, 0, 0, 0.08));
   transition: transform 0.3s ease;
 }
 
+[data-theme="dark"] .feature-icon-box {
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
 .feature-card:hover .feature-icon-box {
-  transform: scale(1.1) rotate(3deg);
+  transform: scale(1.12) rotate(3deg);
 }
 
 .feature-badge-pill {
@@ -150,11 +232,13 @@ body {
   font-weight: 700;
   letter-spacing: 0.4px;
   text-transform: uppercase;
-  padding: 0.25rem 0.65rem;
+  padding: 0.3rem 0.75rem;
   border-radius: 20px;
   background: var(--module-icon-bg, rgba(22, 163, 74, 0.1));
   color: var(--module-accent, #16a34a);
+  backdrop-filter: blur(10px);
   border: 1px solid var(--module-glow, rgba(22, 163, 74, 0.2));
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
 }
 
 .feature-card-cta {
@@ -165,19 +249,22 @@ body {
   align-items: center;
   gap: 0.4rem;
   text-decoration: none;
-  transition: all 0.2s ease;
-  padding: 0.45rem 0.9rem;
-  border-radius: 10px;
+  transition: all 0.25s ease;
+  padding: 0.5rem 1rem;
+  border-radius: 12px;
   background: var(--module-icon-bg, rgba(22, 163, 74, 0.08));
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .feature-card-cta svg {
-  transition: transform 0.2s ease;
+  transition: transform 0.25s ease;
 }
 
 .feature-card:hover .feature-card-cta {
   background: var(--module-accent, var(--primary-green));
   color: #ffffff !important;
+  box-shadow: 0 6px 20px -3px var(--module-shadow, rgba(0, 0, 0, 0.25));
 }
 
 .feature-card:hover .feature-card-cta svg {
@@ -187,20 +274,217 @@ body {
 .stat-icon-wrapper {
   width: 52px;
   height: 52px;
-  border-radius: 12px;
+  border-radius: 16px;
   display: flex;
   align-items: center;
   justify-content: center;
+  backdrop-filter: blur(10px);
+}
+
+/* Liquid Glass Buttons */
+.btn-agri {
+  background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary-green) 100%);
+  color: #ffffff;
+  font-weight: 700;
+  border-radius: 12px;
+  padding: 0.65rem 1.4rem;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 8px 20px -4px rgba(21, 128, 61, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.4);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-agri:hover {
+  background: linear-gradient(135deg, #22c55e 0%, var(--primary-dark) 100%);
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 25px -4px rgba(21, 128, 61, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.5);
+}
+
+.btn-agri-outline {
+  border: 1.5px solid var(--primary-green);
+  color: var(--primary-green);
+  font-weight: 600;
+  border-radius: 12px;
+  padding: 0.6rem 1.3rem;
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(12px);
+  transition: all 0.2s ease;
+}
+
+[data-theme="dark"] .btn-agri-outline {
+  background: rgba(30, 41, 59, 0.5);
+}
+
+.btn-agri-outline:hover {
+  background-color: var(--primary-green);
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+/* Hero Section with Liquid Glass Overlays */
+.hero-banner {
+  background: linear-gradient(135deg, rgba(20, 83, 45, 0.95) 0%, rgba(22, 101, 52, 0.92) 50%, rgba(21, 128, 61, 0.88) 100%),
+              url('https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=1600&auto=format&fit=crop&q=80') center/cover no-repeat;
+  color: #ffffff;
+  border-radius: 28px;
+  padding: 3.8rem 2.8rem;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 20px 45px -12px rgba(21, 128, 61, 0.45), inset 0 1.5px 2px rgba(255, 255, 255, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.hero-banner::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  right: -20%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+  pointer-events: none;
+}
+
+.hero-farm-card {
+  position: relative;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 25px 40px -12px rgba(0, 0, 0, 0.4);
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  height: 300px;
+}
+
+.hero-farm-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hero-farm-card:hover img {
+  transform: scale(1.06);
+}
+
+.hero-farm-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(20, 83, 45, 0.15) 0%, rgba(20, 83, 45, 0.88) 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1.4rem;
+}
+
+/* Liquid Glass Interactive Tabs / Filter Pills */
+.agri-pill {
+  border-radius: 24px;
+  padding: 0.5rem 1.2rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  background-color: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(12px);
+  color: #475569;
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+}
+
+[data-theme="dark"] .agri-pill {
+  background-color: rgba(30, 41, 59, 0.6);
+  color: #cbd5e1;
+}
+
+.agri-pill.active {
+  background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary-green) 100%) !important;
+  color: #ffffff !important;
+  box-shadow: 0 6px 18px rgba(21, 128, 61, 0.35);
+  border-color: rgba(255, 255, 255, 0.3) !important;
+}
+
+/* Liquid Glass Form Controls & Modals */
+.form-control, .form-select {
+  background-color: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 0.65rem 1rem;
+  transition: all 0.25s ease;
+}
+
+.form-control:focus, .form-select:focus {
+  background-color: rgba(255, 255, 255, 0.95);
+  border-color: var(--primary-light);
+  box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.18);
+}
+
+[data-theme="dark"] .form-control,
+[data-theme="dark"] .form-select {
+  background-color: rgba(15, 23, 42, 0.7);
+  color: #f8fafc;
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+[data-theme="dark"] .form-control:focus,
+[data-theme="dark"] .form-select:focus {
+  background-color: rgba(15, 23, 42, 0.92);
+  border-color: var(--primary-light);
+  box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.25);
+}
+
+/* Liquid Glass Dropdown Menus */
+.dropdown-menu {
+  background: var(--surface-glass) !important;
+  backdrop-filter: blur(24px) saturate(190%);
+  -webkit-backdrop-filter: blur(24px) saturate(190%);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  padding: 0.6rem;
+  box-shadow: 0 16px 40px -10px rgba(0, 0, 0, 0.15), var(--glass-inner-light);
+}
+
+.dropdown-item {
+  border-radius: 10px;
+  padding: 0.5rem 0.85rem;
+  transition: all 0.2s ease;
+}
+
+/* Liquid Glass Modals */
+.modal-content {
+  background: var(--surface-glass) !important;
+  backdrop-filter: blur(30px) saturate(200%);
+  -webkit-backdrop-filter: blur(30px) saturate(200%);
+  border: 1px solid var(--glass-border) !important;
+  border-radius: 24px;
+  box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.25), var(--glass-inner-light);
+}
+
+/* Liquid Glass Tables */
+.table {
+  background: transparent !important;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.table thead th {
+  background: rgba(255, 255, 255, 0.5) !important;
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border-color);
+}
+
+[data-theme="dark"] .table thead th {
+  background: rgba(15, 23, 42, 0.6) !important;
 }
 
 /* Dark mode utility overrides */
 [data-theme="dark"] .bg-white {
-  background-color: #1e293b !important;
+  background-color: rgba(30, 41, 59, 0.65) !important;
+  backdrop-filter: blur(16px);
   color: #f8fafc !important;
 }
 
 [data-theme="dark"] .bg-light {
-  background-color: #0f172a !important;
+  background-color: rgba(15, 23, 42, 0.65) !important;
+  backdrop-filter: blur(16px);
   color: #e2e8f0 !important;
 }
 
@@ -213,167 +497,13 @@ body {
 }
 
 [data-theme="dark"] .border {
-  border-color: #334155 !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
 }
 
 [data-theme="dark"] .border-bottom {
-  border-bottom-color: #334155 !important;
+  border-bottom-color: rgba(255, 255, 255, 0.1) !important;
 }
 
 [data-theme="dark"] .border-top {
-  border-top-color: #334155 !important;
-}
-
-[data-theme="dark"] .form-control,
-[data-theme="dark"] .form-select {
-  background-color: #0f172a;
-  color: #f8fafc;
-  border-color: #334155;
-}
-
-[data-theme="dark"] .form-control:focus,
-[data-theme="dark"] .form-select:focus {
-  background-color: #0f172a;
-  color: #f8fafc;
-  border-color: var(--primary-light);
-}
-
-[data-theme="dark"] .dropdown-menu {
-  background-color: #1e293b;
-  border-color: #334155;
-  color: #f8fafc;
-}
-
-[data-theme="dark"] .dropdown-item {
-  color: #e2e8f0;
-}
-
-[data-theme="dark"] .dropdown-item:hover {
-  background-color: #334155;
-  color: #ffffff;
-}
-
-[data-theme="dark"] .modal-content {
-  background-color: #1e293b;
-  color: #f8fafc;
-  border-color: #334155;
-}
-
-[data-theme="dark"] .table {
-  color: #f8fafc;
-  --bs-table-bg: #1e293b;
-  --bs-table-striped-bg: #182234;
-  --bs-table-hover-bg: #273549;
-  border-color: #334155;
-}
-
-[data-theme="dark"] .table-light {
-  background-color: #0f172a !important;
-  color: #f8fafc !important;
-}
-
-/* Primary buttons */
-.btn-agri {
-  background-color: var(--primary-green);
-  color: #ffffff;
-  font-weight: 600;
-  border-radius: 10px;
-  padding: 0.6rem 1.3rem;
-  border: none;
-  transition: all 0.2s ease;
-}
-
-.btn-agri:hover {
-  background-color: var(--primary-dark);
-  color: #ffffff;
-  transform: translateY(-1px);
-}
-
-.btn-agri-outline {
-  border: 1.5px solid var(--primary-green);
-  color: var(--primary-green);
-  font-weight: 600;
-  border-radius: 10px;
-  padding: 0.55rem 1.2rem;
-  background: transparent;
-}
-
-.btn-agri-outline:hover {
-  background-color: var(--primary-green);
-  color: #ffffff;
-}
-
-/* Hero Section */
-.hero-banner {
-  background: linear-gradient(135deg, rgba(20, 83, 45, 0.96) 0%, rgba(22, 101, 52, 0.92) 50%, rgba(21, 128, 61, 0.88) 100%),
-              url('https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=1600&auto=format&fit=crop&q=80') center/cover no-repeat;
-  color: #ffffff;
-  border-radius: 24px;
-  padding: 3.5rem 2.5rem;
-  position: relative;
-  overflow: hidden;
-  box-shadow: 0 16px 36px -12px rgba(21, 128, 61, 0.4);
-}
-
-.hero-banner::after {
-  content: "";
-  position: absolute;
-  top: -50%;
-  right: -20%;
-  width: 500px;
-  height: 500px;
-  background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0) 70%);
-  pointer-events: none;
-}
-
-.hero-farm-card {
-  position: relative;
-  border-radius: 20px;
-  overflow: hidden;
-  box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.35);
-  border: 2px solid rgba(255, 255, 255, 0.2);
-  height: 280px;
-}
-
-.hero-farm-card img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.5s ease;
-}
-
-.hero-farm-card:hover img {
-  transform: scale(1.05);
-}
-
-.hero-farm-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, rgba(20, 83, 45, 0.15) 0%, rgba(20, 83, 45, 0.85) 100%);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 1.25rem;
-}
-
-/* Interactive Tabs / Filter Pills */
-.agri-pill {
-  border-radius: 20px;
-  padding: 0.4rem 1rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.2s;
-  background-color: #e2e8f0;
-  color: #475569;
-  border: 1px solid transparent;
-}
-
-[data-theme="dark"] .agri-pill {
-  background-color: #334155;
-  color: #cbd5e1;
-}
-
-.agri-pill.active {
-  background-color: #15803d !important;
-  color: #ffffff !important;
+  border-top-color: rgba(255, 255, 255, 0.1) !important;
 }

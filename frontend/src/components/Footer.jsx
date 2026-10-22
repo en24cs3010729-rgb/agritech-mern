@@ -6,7 +6,7 @@ export default function Footer() {
   const { t } = useLanguage();
 
   return (
-    <footer className="bg-white border-top py-4 mt-5">
+    <footer className="agri-footer py-4 mt-5">
       <div className="container">
         <div className="row align-items-center">
           <div className="col-md-6 text-center text-md-start mb-3 mb-md-0">
