@@ -1,0 +1,21 @@
+{
+  "name": "agritech-smart-farming-mern",
+  "version": "1.0.0",
+  "description": "AgriTech - Empowering farmers through digital technology (MERN Stack)",
+  "scripts": {
+    "server": "cd backend && npm start",
+    "client": "cd frontend && npm run dev",
+    "seed": "cd backend && npm run seed"
+  },
+  "keywords": [
+    "agritech",
+    "mern",
+    "smart-farming",
+    "crop-monitoring",
+    "soil-analysis",
+    "weather",
+    "marketplace"
+  ],
+  "author": "AgriTech Team",
+  "license": "ISC"
+}

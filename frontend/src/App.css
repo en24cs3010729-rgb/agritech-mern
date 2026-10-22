@@ -1,0 +1,171 @@
+:root {
+  --primary-green: #15803d;
+  --primary-dark: #166534;
+  --primary-light: #22c55e;
+  --accent-gold: #eab308;
+  --accent-amber: #d97706;
+  --bg-soft: #f8fafc;
+  --surface-card: #ffffff;
+  --text-main: #0f172a;
+  --text-muted: #64748b;
+  --border-color: #e2e8f0;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  background-color: var(--bg-soft);
+  color: var(--text-main);
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+/* Custom Navbar */
+.agri-navbar {
+  background: #ffffff;
+  border-bottom: 1px solid var(--border-color);
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.04);
+}
+
+.agri-brand {
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: var(--primary-green) !important;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+}
+
+.nav-link {
+  font-weight: 600;
+  color: #334155 !important;
+  transition: all 0.2s ease;
+  padding: 0.5rem 0.85rem !important;
+  border-radius: 8px;
+}
+
+.nav-link:hover, .nav-link.active {
+  color: var(--primary-green) !important;
+  background-color: #f0fdf4;
+}
+
+/* Feature Cards & Dashboard */
+.agri-card {
+  background: var(--surface-card);
+  border-radius: 16px;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.agri-card:hover {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.07), 0 4px 6px -4px rgba(0, 0, 0, 0.07);
+}
+
+.stat-icon-wrapper {
+  width: 52px;
+  height: 52px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Primary buttons */
+.btn-agri {
+  background-color: var(--primary-green);
+  color: #ffffff;
+  font-weight: 600;
+  border-radius: 10px;
+  padding: 0.6rem 1.3rem;
+  border: none;
+  transition: all 0.2s ease;
+}
+
+.btn-agri:hover {
+  background-color: var(--primary-dark);
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+.btn-agri-outline {
+  border: 1.5px solid var(--primary-green);
+  color: var(--primary-green);
+  font-weight: 600;
+  border-radius: 10px;
+  padding: 0.55rem 1.2rem;
+  background: transparent;
+}
+
+.btn-agri-outline:hover {
+  background-color: var(--primary-green);
+  color: #ffffff;
+}
+
+/* Alert Ribbons & Status Badges */
+.severity-high, .severity-critical {
+  background-color: #fee2e2;
+  color: #dc2626;
+  border: 1px solid #fecaca;
+  font-weight: 700;
+}
+
+.severity-medium {
+  background-color: #fef3c7;
+  color: #b45309;
+  border: 1px solid #fde68a;
+  font-weight: 700;
+}
+
+.severity-low {
+  background-color: #dbeafe;
+  color: #1d4ed8;
+  border: 1px solid #bfdbfe;
+  font-weight: 700;
+}
+
+/* Hero Section */
+.hero-banner {
+  background: linear-gradient(135deg, #14532d 0%, #166534 50%, #15803d 100%);
+  color: #ffffff;
+  border-radius: 24px;
+  padding: 3.5rem 2.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-banner::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  right: -20%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+  pointer-events: none;
+}
+
+/* Progress bar custom */
+.custom-progress {
+  height: 10px;
+  border-radius: 6px;
+  background-color: #e2e8f0;
+}
+
+/* Interactive Tabs */
+.agri-pill {
+  border-radius: 20px;
+  padding: 0.4rem 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  background-color: #f1f5f9;
+  color: #475569;
+  border: 1px solid transparent;
+}
+
+.agri-pill.active {
+  background-color: #15803d;
+  color: #ffffff;
+}
