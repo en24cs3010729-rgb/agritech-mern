@@ -50,7 +50,7 @@ export default function Home() {
                     <ArrowRight size={18} />
                   </Link>
                   <Link to="/login" className="btn btn-outline-light btn-lg px-4 py-2 rounded-pill">
-                    Sign In with Demo
+                    Sign In
                   </Link>
                 </>
               )}
