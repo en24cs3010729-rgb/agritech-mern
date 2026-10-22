@@ -11,6 +11,14 @@
   --border-color: #e2e8f0;
 }
 
+[data-theme="dark"] {
+  --bg-soft: #0b1120;
+  --surface-card: #1e293b;
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --border-color: #334155;
+}
+
 body {
   font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
   background-color: var(--bg-soft);
@@ -18,11 +26,12 @@ body {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
+  transition: background-color 0.25s ease, color 0.25s ease;
 }
 
 /* Custom Navbar */
 .agri-navbar {
-  background: #ffffff;
+  background: var(--surface-card);
   border-bottom: 1px solid var(--border-color);
   box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.04);
 }
@@ -39,7 +48,7 @@ body {
 
 .nav-link {
   font-weight: 600;
-  color: #334155 !important;
+  color: var(--text-main) !important;
   transition: all 0.2s ease;
   padding: 0.5rem 0.85rem !important;
   border-radius: 8px;
@@ -47,7 +56,7 @@ body {
 
 .nav-link:hover, .nav-link.active {
   color: var(--primary-green) !important;
-  background-color: #f0fdf4;
+  background-color: rgba(34, 197, 94, 0.12);
 }
 
 /* Feature Cards & Dashboard */
@@ -70,6 +79,85 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+/* Dark mode utility overrides */
+[data-theme="dark"] .bg-white {
+  background-color: #1e293b !important;
+  color: #f8fafc !important;
+}
+
+[data-theme="dark"] .bg-light {
+  background-color: #0f172a !important;
+  color: #e2e8f0 !important;
+}
+
+[data-theme="dark"] .text-dark {
+  color: #f8fafc !important;
+}
+
+[data-theme="dark"] .text-muted {
+  color: #94a3b8 !important;
+}
+
+[data-theme="dark"] .border {
+  border-color: #334155 !important;
+}
+
+[data-theme="dark"] .border-bottom {
+  border-bottom-color: #334155 !important;
+}
+
+[data-theme="dark"] .border-top {
+  border-top-color: #334155 !important;
+}
+
+[data-theme="dark"] .form-control,
+[data-theme="dark"] .form-select {
+  background-color: #0f172a;
+  color: #f8fafc;
+  border-color: #334155;
+}
+
+[data-theme="dark"] .form-control:focus,
+[data-theme="dark"] .form-select:focus {
+  background-color: #0f172a;
+  color: #f8fafc;
+  border-color: var(--primary-light);
+}
+
+[data-theme="dark"] .dropdown-menu {
+  background-color: #1e293b;
+  border-color: #334155;
+  color: #f8fafc;
+}
+
+[data-theme="dark"] .dropdown-item {
+  color: #e2e8f0;
+}
+
+[data-theme="dark"] .dropdown-item:hover {
+  background-color: #334155;
+  color: #ffffff;
+}
+
+[data-theme="dark"] .modal-content {
+  background-color: #1e293b;
+  color: #f8fafc;
+  border-color: #334155;
+}
+
+[data-theme="dark"] .table {
+  color: #f8fafc;
+  --bs-table-bg: #1e293b;
+  --bs-table-striped-bg: #182234;
+  --bs-table-hover-bg: #273549;
+  border-color: #334155;
+}
+
+[data-theme="dark"] .table-light {
+  background-color: #0f172a !important;
+  color: #f8fafc !important;
 }
 
 /* Primary buttons */
@@ -103,28 +191,6 @@ body {
   color: #ffffff;
 }
 
-/* Alert Ribbons & Status Badges */
-.severity-high, .severity-critical {
-  background-color: #fee2e2;
-  color: #dc2626;
-  border: 1px solid #fecaca;
-  font-weight: 700;
-}
-
-.severity-medium {
-  background-color: #fef3c7;
-  color: #b45309;
-  border: 1px solid #fde68a;
-  font-weight: 700;
-}
-
-.severity-low {
-  background-color: #dbeafe;
-  color: #1d4ed8;
-  border: 1px solid #bfdbfe;
-  font-weight: 700;
-}
-
 /* Hero Section */
 .hero-banner {
   background: linear-gradient(135deg, #14532d 0%, #166534 50%, #15803d 100%);
@@ -146,26 +212,24 @@ body {
   pointer-events: none;
 }
 
-/* Progress bar custom */
-.custom-progress {
-  height: 10px;
-  border-radius: 6px;
-  background-color: #e2e8f0;
-}
-
-/* Interactive Tabs */
+/* Interactive Tabs / Filter Pills */
 .agri-pill {
   border-radius: 20px;
   padding: 0.4rem 1rem;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s;
-  background-color: #f1f5f9;
+  background-color: #e2e8f0;
   color: #475569;
   border: 1px solid transparent;
 }
 
+[data-theme="dark"] .agri-pill {
+  background-color: #334155;
+  color: #cbd5e1;
+}
+
 .agri-pill.active {
-  background-color: #15803d;
-  color: #ffffff;
+  background-color: #15803d !important;
+  color: #ffffff !important;
 }

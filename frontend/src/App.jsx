@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { ThemeProvider } from './context/ThemeContext';
 import { AuthProvider } from './context/AuthContext';
 import { LanguageProvider } from './context/LanguageContext';
 import Navbar from './components/Navbar';
@@ -24,87 +25,89 @@ import './App.css';
 
 export default function App() {
   return (
-    <LanguageProvider>
-      <AuthProvider>
-        <Router>
-          <div className="d-flex flex-column min-vh-100">
-            <Navbar />
-            <main className="flex-grow-1">
-              <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/login" element={<Login />} />
-                <Route path="/register" element={<Register />} />
-                
-                {/* Protected Farmer Routes */}
-                <Route
-                  path="/dashboard"
-                  element={
-                    <ProtectedRoute>
-                      <FarmerDashboard />
-                    </ProtectedRoute>
-                  }
-                />
-                <Route
-                  path="/farms"
-                  element={
-                    <ProtectedRoute>
-                      <FarmManagement />
-                    </ProtectedRoute>
-                  }
-                />
-                <Route
-                  path="/crops"
-                  element={
-                    <ProtectedRoute>
-                      <CropMonitoring />
-                    </ProtectedRoute>
-                  }
-                />
-                <Route
-                  path="/soil"
-                  element={
-                    <ProtectedRoute>
-                      <SoilAnalysis />
-                    </ProtectedRoute>
-                  }
-                />
-                <Route
-                  path="/cart"
-                  element={
-                    <ProtectedRoute>
-                      <CartAndOrders />
-                    </ProtectedRoute>
-                  }
-                />
-                <Route
-                  path="/orders"
-                  element={
-                    <ProtectedRoute>
-                      <CartAndOrders />
-                    </ProtectedRoute>
-                  }
-                />
+    <ThemeProvider>
+      <LanguageProvider>
+        <AuthProvider>
+          <Router>
+            <div className="d-flex flex-column min-vh-100">
+              <Navbar />
+              <main className="flex-grow-1">
+                <Routes>
+                  <Route path="/" element={<Home />} />
+                  <Route path="/login" element={<Login />} />
+                  <Route path="/register" element={<Register />} />
+                  
+                  {/* Protected Farmer Routes */}
+                  <Route
+                    path="/dashboard"
+                    element={
+                      <ProtectedRoute>
+                        <FarmerDashboard />
+                      </ProtectedRoute>
+                    }
+                  />
+                  <Route
+                    path="/farms"
+                    element={
+                      <ProtectedRoute>
+                        <FarmManagement />
+                      </ProtectedRoute>
+                    }
+                  />
+                  <Route
+                    path="/crops"
+                    element={
+                      <ProtectedRoute>
+                        <CropMonitoring />
+                      </ProtectedRoute>
+                    }
+                  />
+                  <Route
+                    path="/soil"
+                    element={
+                      <ProtectedRoute>
+                        <SoilAnalysis />
+                      </ProtectedRoute>
+                    }
+                  />
+                  <Route
+                    path="/cart"
+                    element={
+                      <ProtectedRoute>
+                        <CartAndOrders />
+                      </ProtectedRoute>
+                    }
+                  />
+                  <Route
+                    path="/orders"
+                    element={
+                      <ProtectedRoute>
+                        <CartAndOrders />
+                      </ProtectedRoute>
+                    }
+                  />
 
-                {/* Open / Interactive Modules */}
-                <Route path="/weather" element={<WeatherPest />} />
-                <Route path="/marketplace" element={<Marketplace />} />
-                <Route path="/forum" element={<CommunityForum />} />
+                  {/* Open / Interactive Modules */}
+                  <Route path="/weather" element={<WeatherPest />} />
+                  <Route path="/marketplace" element={<Marketplace />} />
+                  <Route path="/forum" element={<CommunityForum />} />
 
-                {/* Protected Admin Routes */}
-                <Route
-                  path="/admin"
-                  element={
-                    <ProtectedRoute adminOnly={true}>
-                      <AdminDashboard />
-                    </ProtectedRoute>
-                  }
-                />
-              </Routes>
-            </main>
-            <Footer />
-          </div>
-        </Router>
-      </AuthProvider>
-    </LanguageProvider>
+                  {/* Protected Admin Routes */}
+                  <Route
+                    path="/admin"
+                    element={
+                      <ProtectedRoute adminOnly={true}>
+                        <AdminDashboard />
+                      </ProtectedRoute>
+                    }
+                  />
+                </Routes>
+              </main>
+              <Footer />
+            </div>
+          </Router>
+        </AuthProvider>
+      </LanguageProvider>
+    </ThemeProvider>
   );
 }
